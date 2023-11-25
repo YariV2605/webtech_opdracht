@@ -1,9 +1,21 @@
 var express = require('express');
-const {join} = require("path");
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.sendFile(join(__dirname, '../lijst.html'))
-});
+const bierHandler = require("./bierHandler")
+
+
+router.get('/', bierHandler.bier_list);
+
+router.get('/create', bierHandler.bier_create_get);
+router.post('/create', bierHandler.bier_create_post);
+
+router.get('/delete', bierHandler.bier_delete_get);
+router.post('/delete', bierHandler.bier_delete_post);
+
+router.get('/update', bierHandler.bier_update_get);
+router.post('/update', bierHandler.bier_update_post);
+
+router.get('/:bierId', bierHandler.bier_detail);
+
+
 module.exports = router;
