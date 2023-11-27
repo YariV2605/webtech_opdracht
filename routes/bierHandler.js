@@ -1,9 +1,9 @@
 const asyncHandler = require("express-async-handler");
-const {join} = require("path");
+// const {join} = require("path");
 const bierModel = require("../models/bierModel");
 
 // toon bierlijst
-exports.bier_list = asyncHandler(async (req, res, next) => {
+exports.bier_list = asyncHandler(async (req, res) => {
     const allBier = await bierModel.find({}, "name merk")
         .sort({name : 1})
         .populate("merk")
@@ -21,13 +21,14 @@ exports.bier_detail = asyncHandler(async (req, res, next) => {
 
     if (bier === null) {
         // No results.
-        const err = new Error("Book not found");
+        const err = new Error("Beer not found");
         err.status = 404;
         return next(err);
     }
 
     res.render("bierDetails", {
-        title: bier.name//TODO
+        name: bier.name,
+        merk: bier.merk,
     });
     // res.send(`NOT IMPLEMENTED: Bier detail: ${req.params.id}`);
 });
