@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 // const {join} = require("path");
 const bierModel = require("../models/bierModel");
+const {join} = require("path");
 
 // toon bierlijst
 exports.bier_list = asyncHandler(async (req, res) => {
@@ -35,12 +36,13 @@ exports.bier_detail = asyncHandler(async (req, res, next) => {
 
 // toon create form
 exports.bier_create_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Bier create GET");
+    res.sendFile(join(__dirname, '../createBier.html'));
+    // res.send("NOT IMPLEMENTED: Bier create GET");
 });
 
 // voeg toe aan db
 exports.bier_create_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Bier create POST");
+    res.send("NOT IMPLEMENTED: Bier create POST");//TODO bier aan dbb toevoegen
 });
 
 // toon delete form
