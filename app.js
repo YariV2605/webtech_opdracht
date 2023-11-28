@@ -47,21 +47,17 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-/*
 
 
 const mongoose = require("mongoose");
 
-// Set `strictQuery: false` to globally opt into filtering by properties that aren't in the schema
-// Included because it removes preparatory warnings for Mongoose 7.
-// See: https://mongoosejs.com/docs/migrating_to_6.html#strictquery-is-removed-and-replaced-by-strict
 mongoose.set("strictQuery", false);
 
 // Define the database URL to connect to.
-const mongoDB = "mongodb://localhost:27017";
+const mongoDB = "mongodb+srv://webtech:Cosv4HC8U7ngAmiq@cluster0.piyp4wl.mongodb.net/bier?retryWrites=true&w=majority";
 
 // Wait for database to connect, logging an error if there is a problem
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
-}*/
+}
