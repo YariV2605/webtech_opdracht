@@ -5,10 +5,20 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const bierSchema = new Schema({
-    name: String,
-    merk: {type: Schema.Types.ObjectId, ref: "merk"},
+    name: {
+        type:String,
+        required : true
+    },
+    merk: {
+        type: Schema.Types.ObjectId,
+        ref: "merk",
+        required : true
+    },
     foto: String,                                       //naam van de foto --> moet ook ge-upload kunnen worden
-    percentage: Number,
+    percentage: {
+        type: Number,
+        required : true
+    },
     score: Number,
 });
 

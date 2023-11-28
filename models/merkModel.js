@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const merkSchema = new Schema({
-    merk: String,
+    merk: {
+        type: String,
+        required : true
+    },
     site: String,//link naar de site van dit merk
 });
 

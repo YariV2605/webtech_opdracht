@@ -8,7 +8,10 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: String,
     favorieten: [{type: Schema.Types.ObjectId, ref: "bier"}],
-    mail: String,
+    passwordHash: {
+        type: String,
+        required : true
+    }
 })
 
 module.exports = mongoose.model("user", userSchema);
