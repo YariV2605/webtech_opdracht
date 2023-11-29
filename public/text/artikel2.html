@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bierview</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+        body, html {
+            height: 100%;
+            line-height: 1.8;
+        }
+
+        /* Full height image header */
+        .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("/images/brugse-zot.png");
+            min-height: 100%;
+        }
+
+        .w3-bar .w3-button {
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide">BIERMAGAZINE</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+            <a href="/" class="w3-bar-item w3-button">HOME</a>
+            <a href="/ranking" class="w3-bar-item w3-button"><i class="fa fa-user"></i> RANKING</a>
+            <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-th"></i> BIERLIJST</a>
+            <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-map-pin"></i> HOTSPOTS</a>
+            <a href="/shop" class="w3-bar-item w3-button"><i class="fa fa-shopping-cart"></i> </a>
+        </div>
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</div>
+
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="#ranking" onclick="w3_close()" class="w3-bar-item w3-button">RANKING</a>
+    <a href="#bierlijst" onclick="w3_close()" class="w3-bar-item w3-button">BIERLIJST</a>
+    <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-map-pin"></i> HOTSPOTS</a>
+    <a href="#winkelwagen" onclick="w3_close()" class="w3-bar-item w3-button">WINKELWAGEN</a>
+</nav>
+
+<div class="w3-container  w3-padding-64 ">
+    <div class="w3-padding">
+        <div class="w3-flex-container">
+            <div class="w3-text-content">
+                <div class = "w3-center w3-padding-32 ">
+                    <h2>Hier zijn 4 hotspots in Gent!</h2>
+                    <div class = "w3-container">
+                        <img src="/public/images/brussel.jpeg" width="800" height="500">
+                    </div>
+                </div>
+
+                <div class = "w3-left">
+                    <p>Natuurlijk, laten we een andere avondplanning voor Brussel samenstellen:</p>
+                    <p>
+                        17:30 - 19:00: Kunst en Cultuur in het Magritte Museum
+                        Begin je avond met een bezoek aan het Magritte Museum, gewijd aan de surrealistische kunstenaar René Magritte. Verken de fascinerende wereld van zijn kunstwerken en laat je inspireren door de unieke en intrigerende tentoonstellingen.
+                    </p>
+                    <p>
+                        19:30 - 21:00: Diner bij een gastronomisch restaurant zoals Comme Chez Soi
+                        Ga voor een exclusieve culinaire ervaring bij een gerenommeerd restaurant zoals Comme Chez Soi, waar je kunt genieten van hoogwaardige Belgische gastronomie op zijn best. Laat je verwennen met verfijnde gerechten en een uitmuntende service.
+                    </p>
+                    <p>
+                        21:30 - 23:00: Een avondwandeling door de Marollenwijk
+                        Na het diner kun je een wandeling maken door de sfeervolle Marollenwijk. Ontdek de charmante antiekwinkels, kunstgaleries en lokale boetiekjes. Misschien vind je wel unieke souvenirs of gewoon genieten van de levendige sfeer van deze buurt.
+                    </p>
+                    <p>
+                        23:30 - ...: Live muziek en cocktails bij Archiduc
+                        Sluit je avond af met live muziek en heerlijke cocktails bij Archiduc, een historische jazzbar in Brussel. Geniet van de relaxte sfeer, luister naar goede muziek en proef van de smaakvolle cocktails terwijl je de avond in stijl afsluit.
+                    </p>
+                    <p>
+                        Deze planning biedt een mix van kunst, culinaire hoogstandjes, culturele verkenning en entertainment, waardoor je een veelzijdige en boeiende avond hebt in Brussel. Vergeet niet te genieten van elk moment!</p>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script>
+    // Modal Image Gallery
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
+
+
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+        } else {
+            mySidebar.style.display = 'block';
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

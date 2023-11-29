@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bierview</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+        body, html {
+            height: 100%;
+            line-height: 1.8;
+        }
+
+        /* Full height image header */
+        .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("/images/brugse-zot.png");
+            min-height: 100%;
+        }
+
+        .w3-bar .w3-button {
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide">BIERMAGAZINE</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+            <a href="/" class="w3-bar-item w3-button">HOME</a>
+            <a href="/ranking" class="w3-bar-item w3-button"><i class="fa fa-user"></i> RANKING</a>
+            <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-th"></i> BIERLIJST</a>
+            <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-map-pin"></i> HOTSPOTS</a>
+            <a href="/shop" class="w3-bar-item w3-button"><i class="fa fa-shopping-cart"></i> </a>
+        </div>
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</div>
+
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="#ranking" onclick="w3_close()" class="w3-bar-item w3-button">RANKING</a>
+    <a href="#bierlijst" onclick="w3_close()" class="w3-bar-item w3-button">BIERLIJST</a>
+    <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-map-pin"></i> HOTSPOTS</a>
+    <a href="#winkelwagen" onclick="w3_close()" class="w3-bar-item w3-button">WINKELWAGEN</a>
+</nav>
+
+<div class="w3-container w3-padding-64 ">
+    <div class="w3-padding">
+        <div class="w3-flex-container">
+            <div class="w3-text-content">
+                <a href="/text/artikel1.html">
+                    <div class="w3-padding-8">
+                        <h2><a href="/text/artikel1.html">Ontdek 4 hotspots in Gent!</a></h2>
+                    </div>
+                </a>
+                <p>We zijn voor jou 4 bruisende plekjes gaan ontdekken in Gent. Klik om te ontdekken waar je zeker naartoe moet tijdens een tripje.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-padding">
+        <div class="w3-flex-container">
+            <div class="w3-text-content">
+                <a href="/text/artikel1.html">
+                    <div class="w3-padding-8">
+                        <h2><a href="/text/artikel1.html">Avondje Brussel! Ga je mee?</a></h2>
+                    </div>
+                </a>
+                <p>We stippelden voor jou een avondje Brussel. Ontdek hier wat jij kan doen met je vrienden of eventueel op date.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script>
+    // Modal Image Gallery
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
+
+
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+        } else {
+            mySidebar.style.display = 'block';
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

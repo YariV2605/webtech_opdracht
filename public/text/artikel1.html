@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bierview</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+        body, html {
+            height: 100%;
+            line-height: 1.8;
+        }
+
+        /* Full height image header */
+        .bgimg-1 {
+            background-position: center;
+            background-size: cover;
+            background-image: url("/images/brugse-zot.png");
+            min-height: 100%;
+        }
+
+        .w3-bar .w3-button {
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-card" id="myNavbar">
+        <a href="#home" class="w3-bar-item w3-button w3-wide">BIERMAGAZINE</a>
+        <!-- Right-sided navbar links -->
+        <div class="w3-right w3-hide-small">
+            <a href="/" class="w3-bar-item w3-button">HOME</a>
+            <a href="/ranking" class="w3-bar-item w3-button"><i class="fa fa-user"></i> RANKING</a>
+            <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-th"></i> BIERLIJST</a>
+            <a href="/shop" class="w3-bar-item w3-button"><i class="fa fa-shopping-cart"></i> </a>
+        </div>
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</div>
+
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="#home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="#ranking" onclick="w3_close()" class="w3-bar-item w3-button">RANKING</a>
+    <a href="#bierlijst" onclick="w3_close()" class="w3-bar-item w3-button">BIERLIJST</a>
+    <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-map-pin"></i> HOTSPOTS</a>
+    <a href="#winkelwagen" onclick="w3_close()" class="w3-bar-item w3-button">WINKELWAGEN</a>
+</nav>
+
+<div class="w3-container w3-center w3-padding-64 ">
+    <div class="w3-padding">
+        <div class="w3-flex-container">
+            <div class="w3-text-content">
+                <h2>Hier zijn 4 hotspots in Gent!</h2>
+                <h4>Hotclub</h4>
+                <div class = "w3-container">
+                    <img src="/public/images/hotclub.jpeg"  width="650" height="500">
+                </div>
+                <div class= "w3-container w3-center w3-padding-16 ">
+                    <p>
+                        De Hot Club in Gent is echt een verborgen juweeltje in de stad. Mijn ervaring daar was buitengewoon bruisend en levendig. Zodra je binnenstapt, voel je meteen de pulserende energie van livemuziek die de ruimte vult.
+                        Het interieur is een mooie mix van vintage en eigentijds design, wat een warme en uitnodigende sfeer creëert. Het podium is het middelpunt van de aandacht, waar getalenteerde muzikanten de avond tot leven brengen met jazz, blues en andere fantastische genres. De akoestiek was verbluffend en droeg echt bij aan de algehele ervaring.
+                        Wat me opviel was de diversiteit aan mensen die er samenkwamen; het voelde als een gemeenschappelijke viering van goede muziek en een geweldige sfeer.
+                        De bediening was attent en vriendelijk, wat de hele ervaring nog plezieriger maakte.
+                        De Hot Club is absoluut een plek waar je naartoe gaat om te genieten van een geweldige avond uit met vrienden.
+                        Of je nu een fervent liefhebber van livemuziek bent of gewoon op zoek bent naar een plek met een geweldige ambiance, deze club heeft het allemaal. Het was voor mij een onvergetelijke ervaring die zeker de moeite van het bezoeken waard is als je in Gent bent!
+                    </p>
+                </div>
+                <h4>Bar Ventura</h4>
+                <div class = "w3-container">
+                    <img src="/public/images/ventura.jpeg" width="650" height="500">
+                </div>
+                <div class= "w3-container w3-center w3-padding-16 ">
+                    <p>
+                        Bar Ventura in Gent is een echte parel in de stad. Mijn bezoek aan deze bar was een verfrissende ervaring. Zodra je binnenstapt, voel je de ontspannen sfeer die de perfecte setting creëert voor een gezellig samenzijn.
+                        Het interieur is stijlvol en uitnodigend, met een mix van moderne en klassieke elementen die de bar een unieke uitstraling geven. Het is een plek waar je je meteen op je gemak voelt, ideaal voor een informele ontmoeting met vrienden of zelfs om in je eentje te genieten van een drankje.
+                        Het assortiment aan drankjes is indrukwekkend, met een scala aan cocktails, lokale bieren en andere verfrissende opties. De bediening was attent en vriendelijk, waardoor mijn ervaring nog plezieriger werd.
+                        Wat deze plek zo speciaal maakt, is de relaxte ambiance die uitnodigt tot leuke gesprekken en een heerlijke tijd met elkaar. Of je nu op zoek bent naar een rustige avond of een levendige sociale ontmoetingsplek, Bar Ventura heeft zeker voor ieder wat wils.
+                        Als je in Gent bent en op zoek bent naar een gezellige bar met een geweldige sfeer, dan is Bar Ventura absoluut een aanrader! Mijn bezoek was een echt genot en ik kijk er zeker naar uit om terug te gaan.
+                    </p>
+                </div>
+                <h4>Dulle griet</h4>
+                <div class = "w3-container">
+                    <img src="/public/images/dulle.jpeg" width="650" height="500">
+                </div>
+                <div class= "w3-container w3-center w3-padding-16 ">
+                    <p>
+                        Ah, De Dulle Griet in Gent! Wat een levendige en karaktervolle plek is dat zeg. Als je de geplaveide straten van Gent bewandelt, valt deze bar absoluut op met zijn eigenzinnige uitstraling en unieke sfeer.
+                        Het eerste wat opvalt is natuurlijk de gigantische schoen boven de ingang, die bekend staat als "Het Kanon". Het is een beroemde traditie dat bezoekers hun schoen als borg achterlaten in ruil voor een van de 500 verschillende bieren die hier worden geserveerd.
+                        Een echt uniek concept dat zorgt voor een speelse en gezellige sfeer.
+                        Binnen wordt het verhaal alleen maar boeiender. De inrichting is rustiek en gezellig, met veel karakter en geschiedenis in elk hoekje. De bierkaart is indrukwekkend en biedt een enorm scala aan Belgische bieren, variërend van lokale ambachtelijke brouwsels tot bekende klassiekers.
+                        Het is een paradijs voor bierliefhebbers!
+
+                        Wat me het meest bijbleef, naast het enorme bierassortiment, was de levendige sfeer. Mensen genieten hier echt van het samenzijn, of het nu met vrienden, familie of zelfs vreemden aan de bar is. De vriendelijke bediening voegt zeker toe aan de ervaring.
+                        Als je op zoek bent naar een gezellige avond met een ongelooflijke selectie aan bieren en een levendige sfeer, dan is De Dulle Griet zeker een bezoekje waard als je in Gent bent!
+                </p>
+                </div>
+                <h4>Omgekeerde wereld</h4>
+                <div class = "w3-container">
+                    <img src="/public/images/omgekeerde.jpeg" width="650" height="500" >
+                </div>
+                <div class= "w3-container w3-center w3-padding-16 ">
+                    <p>
+                        De Omgekeerde Wereld in Gent is werkelijk een betoverende en intrigerende plek. Mijn bezoek daar was een ervaring die ik niet snel zal vergeten. Zodra je door de deur stapt, word je ondergedompeld in een wereld die alle verwachtingen tart.
+                        Het interieur is echt uniek, met een mix van stijlen die samen een surrealistische sfeer creëren. Overal waar je kijkt, zijn er fascinerende elementen en onverwachte wendingen. Het is alsof de ruimte zelf een verhaal vertelt, en elk detail is zorgvuldig gekozen om je nieuwsgierigheid te prikkelen.
+                        Wat me het meest bijbleef, was de onvoorspelbaarheid van de ervaring. Het voelde alsof alles op zijn kop stond - van ongewone decoraties tot verrassende thema-avonden. Het is geen gewone bar; het is eerder een plek waar je naartoe gaat om jezelf te laten verrassen en de conventionele grenzen te doorbreken.
+                        De sfeer was magisch en uitnodigend. Mensen leken te genieten van het feit dat alles anders was dan normaal. Er hing een gevoel van verwachting in de lucht, alsof er elk moment iets buitengewoons kon gebeuren.
+                        De Omgekeerde Wereld is een bestemming voor avontuurlijke geesten, voor mensen die graag buiten de gebaande paden treden en openstaan voor onverwachte ervaringen. Het is absoluut een plek die ik aanraad voor iedereen die op zoek is naar iets unieks en boeiends tijdens een bezoek aan Gent!
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
+
+<script>
+    // Modal Image Gallery
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
+
+
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+        } else {
+            mySidebar.style.display = 'block';
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+    }
+</script>
+
+</body>
+</html>
