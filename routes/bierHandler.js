@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 // const {join} = require("path");
 const bierModel = require("../models/bierModel");
+const merkModel = require("../models/merkModel")
 const {join} = require("path");
 
 // toon bierlijst
@@ -11,6 +12,16 @@ exports.bier_list = asyncHandler(async (req, res) => {
         .exec()
 
     res.render('bierLijst', {title: "bier lijst", bier_list: allBier});
+});
+
+exports.bier_list_per_merk = asyncHandler(async (req, res) => {
+    const selectedMerk = await merkModel.find({_id : req.params.merkId})
+    const merkBier = await bierModel.find({merk: selectedMerk}, "name merk")
+       .sort({name : 1})
+       .populate("merk")
+       .exec()
+
+    res.render('bierLijst', {title: selectedMerk.merk + " lijst", bier_list: merkBier});
 });
 
 // toon specifiek bier
@@ -42,6 +53,8 @@ exports.bier_create_get = asyncHandler(async (req, res, next) => {
 
 // voeg toe aan db
 exports.bier_create_post = asyncHandler(async (req, res, next) => {
+    // const merk = ;//TODO get from db
+    // const model = new bierModel({name: req.params.naam, merk});
     res.send("NOT IMPLEMENTED: Bier create POST");//TODO bier aan dbb toevoegen
 });
 
