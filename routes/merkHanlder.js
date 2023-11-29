@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 // const {join} = require("path");
 const merkModel = require("../models/merkModel");
 const {join} = require("path");
+const { body, validationResult } = require("express-validator");
 
 // toon bierlijst
 exports.merk_list = asyncHandler(async (req, res) => {
