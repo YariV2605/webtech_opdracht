@@ -12,7 +12,7 @@ exports.bier_list = asyncHandler(async (req, res) => {
         .populate("merk")
         .exec()
 
-    res.render('bierLijst', {title: "bier lijst", bier_list: allBier});
+    res.render('bierLijst.pug', {title: "bier lijst", bier_list: allBier});
 });
 
 exports.bier_list_per_merk = asyncHandler(async (req, res) => {
@@ -22,7 +22,7 @@ exports.bier_list_per_merk = asyncHandler(async (req, res) => {
        .populate("merk")
        .exec()
 
-    res.render('bierLijst', {title: selectedMerk.merk + " lijst", bier_list: merkBier});
+    res.render('bierLijst.pug', {title: selectedMerk.merk + " lijst", bier_list: merkBier});
 });
 
 // toon specifiek bier
@@ -39,7 +39,7 @@ exports.bier_detail = asyncHandler(async (req, res, next) => {
         return next(err);
     }
 
-    res.render("bierDetails", {
+    res.render("bierDetails.pug", {
         name: bier.name,
         merk: bier.merk,
     });

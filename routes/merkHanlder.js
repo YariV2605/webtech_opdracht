@@ -10,7 +10,7 @@ exports.merk_list = asyncHandler(async (req, res) => {
         .sort({name : 1})
         .exec()
 
-    res.render('merkLijst', {title: "merk lijst", merk_list: allMerk});
+    res.render('merkLijst.pug', {title: "merk lijst", merk_list: allMerk});
 });
 
 // toon specifiek merk
