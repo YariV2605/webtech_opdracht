@@ -1,6 +1,6 @@
 doctype html
 head
-    title= name
+    title= title
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1')
     link(rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css')
@@ -21,6 +21,10 @@ head
         }
         .w3-bar .w3-button {
             padding: 16px;
+        }
+
+        ul {
+            padding-top: 50px; /* Adjust as needed based on your navbar height */
         }
 // Navbar (sit on top)
 .w3-top
@@ -44,14 +48,8 @@ head
 
 
 //TODO foto tonen
-ul
-    li naam: (#{name})
-    li merk: (#{merk.merk})
-
-    each bier in bier_list
-        li
-            a(href=bier.url) #{bier.title}
-            |  (#{bier.merk.merk})
-
-    else
-        li Geen bier in de DB.
+.w3-container(style='padding:128px 16px')
+    h3.w3-center #{bier.name}
+    .w3-row-padding.w3-center(style='margin-top:64px')
+        p
+        |   #{bier.merk.merk}

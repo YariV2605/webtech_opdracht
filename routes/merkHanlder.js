@@ -16,18 +16,19 @@ exports.merk_list = asyncHandler(async (req, res) => {
 // toon specifiek merk
 exports.merk_detail = asyncHandler(async (req, res, next) => {
     const merk =
-        await merkModel.findById(req.params.id)
+        await merkModel.findById(req.params.merkId)
             .exec()
 
-    if (bier === null) {
+    if (merk === null) {
         // No results.
         const err = new Error("merk not found");
         err.status = 404;
         return next(err);
     }
 
-    res.render("bierDetails", {
-        name: merk.merk,
+    res.render("merkDetails", {
+        title: merk.merk,
+        merk: merk.merk
     });
     // res.send(`NOT IMPLEMENTED: Merk detail: ${req.params.id}`);
 });
@@ -39,9 +40,26 @@ exports.merk_create_get = asyncHandler(async (req, res, next) => {
 });
 
 // voeg toe aan db
-exports.merk_create_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Merk create POST");//TODO merk aan db toevoegen
-});
+exports.merk_create_post = [
+    body("merk", "merk moet ingevuld zijn.")
+        .trim()                      // whitespace in begin en eind verwijderen
+        .isLength({min: 1})  // er moet iets ingevuld zijn
+        .escape(),                  // sanitation
+
+    asyncHandler(async (req, res, next) => {
+        const errors = validationResult(req);
+        if(errors.isEmpty()){
+            const merk = new merkModel({
+                merk: req.body.merk
+            });
+            await merk.save();
+            res.redirect(merk.url);
+        }
+        else {
+            res.sendFile(join(__dirname, '../createMerk.html'));
+        }
+    })
+];
 
 // toon delete form
 exports.merk_delete_get = asyncHandler(async (req, res, next) => {

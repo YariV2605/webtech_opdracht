@@ -16,8 +16,8 @@ exports.bier_list = asyncHandler(async (req, res) => {
 });
 
 exports.bier_list_per_merk = asyncHandler(async (req, res) => {
-    const selectedMerk = await merkModel.find({_id : req.params.merkId})
-    const merkBier = await bierModel.find({merk: selectedMerk}, "name merk")
+    const selectedMerk = await merkModel.find({_id : req.params.merkId}).exec()
+    const merkBier = await bierModel.find({merk: selectedMerk})
        .sort({name : 1})
        .populate("merk")
        .exec()
@@ -28,7 +28,7 @@ exports.bier_list_per_merk = asyncHandler(async (req, res) => {
 // toon specifiek bier
 exports.bier_detail = asyncHandler(async (req, res, next) => {
     const bier =
-        await bierModel.findById(req.params.id)
+        await bierModel.findById(req.params.bierId)
             .populate("merk")
             .exec()
 
@@ -38,26 +38,43 @@ exports.bier_detail = asyncHandler(async (req, res, next) => {
         err.status = 404;
         return next(err);
     }
+    console.log(bier)
 
     res.render("bierDetails.pug", {
-        name: bier.name,
-        merk: bier.merk,
+        title: bier.name,
+        bier: bier
     });
     // res.send(`NOT IMPLEMENTED: Bier detail: ${req.params.id}`);
 });
 
 // toon create form
 exports.bier_create_get = asyncHandler(async (req, res, next) => {
-    res.sendFile(join(__dirname, '../createBier.html'));
-    // res.send("NOT IMPLEMENTED: Bier create GET");
+    res.sendFile(join(__dirname, '../createBier.html'));//TODO als req.params.merkId niet bestaat --> error
 });
 
 // voeg toe aan db
-exports.bier_create_post = asyncHandler(async (req, res, next) => {
-    // const merk = ;//TODO get from db
-    // const model = new bierModel({name: req.params.naam, merk});
-    res.send("NOT IMPLEMENTED: Bier create POST");//TODO bier aan dbb toevoegen
-});
+exports.bier_create_post = [
+    body("naam", "naam moet ingevuld zijn.")//TODO check op al gebruikte naam
+        .trim()                      // whitespace in begin en eind verwijderen
+        .isLength({min: 1})  // er moet iets ingevuld zijn
+        .escape(),                  // sanitation
+
+    asyncHandler(async (req, res, next) => {
+        const errors = validationResult(req);
+        if(errors.isEmpty()){
+            const merk = await merkModel.findById(req.params.merkId).exec();
+            const bier = new bierModel({
+                naam: req.body.naam,
+                merk: merk
+            });
+            await bier.save();
+            res.redirect(bier.url);
+        }
+        else {
+            res.sendFile(join(__dirname, '../createBier.html'));
+        }
+    })
+];
 
 // toon delete form
 exports.bier_delete_get = asyncHandler(async (req, res, next) => {

@@ -9,4 +9,8 @@ const merkSchema = new Schema({
     site: String,//link naar de site van dit merk
 });
 
+merkSchema.virtual('url').get(function() {
+    return '/lijst/' + this._id; // Customize this based on your needs
+});
+
 module.exports = mongoose.model("merk", merkSchema);

@@ -46,10 +46,10 @@ head
         a.w3-bar-item.w3-button.w3-right.w3-hide-large.w3-hide-medium(href='javascript:void(0)' onclick='w3_open()')
             i.fa.fa-bars
 
-ul
-    each merk in merk_list
-        li
-            a(href=merk.url) #{merk.merk}
 
-    else
-        li Geen merken in de DB.
+.w3-container(style='padding:128px 16px')
+    h3.w3-center #{merk}
+    .w3-row-padding.w3-center(style='margin-top:64px')
+        p
+        |   #{merk}
+        ul

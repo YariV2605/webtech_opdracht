@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const bierSchema = new Schema({
-    name: {
+    naam: {
         type:String,
         required : true
     },
@@ -14,15 +14,17 @@ const bierSchema = new Schema({
         ref: "merk",
         required : true
     },
-    foto: String,                                       //naam van de foto --> moet ook ge-upload kunnen worden
-    percentage: {
-        type: Number,
-        required : true
-    },
-    score: Number,
+    // foto: String,                                       //naam van de foto --> moet ook ge-upload kunnen worden
+    // percentage: {
+    //     type: Number,
+    //     required : true
+    // },
+    // score: Number,
 });
 
-
+bierSchema.virtual('url').get(function() {
+    return '/lijst/' + this.merk._id + '/' + this._id; // Customize this based on your needs
+});
 
 
 
