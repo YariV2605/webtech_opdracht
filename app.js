@@ -10,6 +10,8 @@ var rankingRouter = require('./routes/ranking');
 var lijstRouter = require('./routes/lijst');
 var shopRouter = require('./routes/shop');
 var bierMaandRouter = require('./routes/bierMaand');
+var hotspotRouter = require('./routes/hotspot');
+var imageRouter = require('./routes/images');
 
 var app = express();
 
@@ -29,6 +31,9 @@ app.use('/ranking', rankingRouter);
 app.use('/lijst', lijstRouter);
 app.use('/shop', shopRouter);
 app.use('/bierMaand', bierMaandRouter);
+app.use('/hotspot', hotspotRouter);
+app.use('/public/images', imageRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

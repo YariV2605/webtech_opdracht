@@ -28,7 +28,7 @@ exports.merk_detail = asyncHandler(async (req, res, next) => {
 
     res.render("merkDetails", {
         title: merk.merk,
-        merk: merk.merk
+        merk: merk
     });
     // res.send(`NOT IMPLEMENTED: Merk detail: ${req.params.id}`);
 });
