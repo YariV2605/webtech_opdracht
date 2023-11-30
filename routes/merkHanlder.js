@@ -35,7 +35,7 @@ exports.merk_detail = asyncHandler(async (req, res, next) => {
 
 // toon create form
 exports.merk_create_get = asyncHandler(async (req, res, next) => {
-    res.sendFile(join(__dirname, '../createMerk.html'));//TODO make file
+    res.sendFile(join(__dirname, '../createMerk.html'));
     // res.send("NOT IMPLEMENTED: Merk create GET");
 });
 

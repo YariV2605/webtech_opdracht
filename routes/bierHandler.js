@@ -41,10 +41,9 @@ exports.bier_detail = asyncHandler(async (req, res, next) => {
     console.log(bier)
 
     res.render("bierDetails.pug", {
-        title: bier.name,
+        title: bier.naam,
         bier: bier
     });
-    // res.send(`NOT IMPLEMENTED: Bier detail: ${req.params.id}`);
 });
 
 // toon create form
