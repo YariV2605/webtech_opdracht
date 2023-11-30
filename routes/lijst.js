@@ -16,10 +16,11 @@ router.post('/delete', merkHandler.merk_delete_post);
 router.get('/update', merkHandler.merk_update_get);
 router.post('/update', merkHandler.merk_update_post);
 
-router.get('/:merkId', merkHandler.merk_detail)
-
-
 router.get('/bier', bierHandler.bier_list);
+
+router.get('/:merkId', merkHandler.merk_detail);
+
+
 router.get('/:merkId/bier', bierHandler.bier_list_per_merk);
 
 router.get('/:merkId/create', bierHandler.bier_create_get);
