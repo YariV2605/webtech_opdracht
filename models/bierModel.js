@@ -14,6 +14,16 @@ const bierSchema = new Schema({
         ref: "merk",
         required : true
     },
+    aantalVotes: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    score: {
+        type : Number,
+        required : true,
+        default : 0
+    }
     // foto: String,                                       //naam van de foto --> moet ook ge-upload kunnen worden
     // percentage: {
     //     type: Number,
@@ -24,6 +34,10 @@ const bierSchema = new Schema({
 
 bierSchema.virtual('url').get(function() {
     return '/lijst/' + this.merk._id + '/' + this._id; // Customize this based on your needs
+});
+
+bierSchema.virtual('rating').get(function() {
+   return this.score/this.aantalVotes;
 });
 
 

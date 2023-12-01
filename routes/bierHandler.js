@@ -7,7 +7,7 @@ const { body, validationResult } = require("express-validator");
 
 // toon bierlijst
 exports.bier_list = asyncHandler(async (req, res) => {
-    const allBier = await bierModel.find({}, "name merk")
+    const allBier = await bierModel.find({})
         .sort({name : 1})
         .populate("merk")
         .exec()
