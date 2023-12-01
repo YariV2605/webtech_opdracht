@@ -2,7 +2,6 @@ const userModel = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 const {join} = require("path");
 const { body, validationResult } = require("express-validator");
-// const session = require('express-session');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -37,12 +36,13 @@ exports.user_detail_post = [
     }
 ];
 
+
+
+
+
 exports.sign_up = asyncHandler(async (req, res, next) => {
     res.sendFile(join(__dirname, '../signup.html'));
 });
-
-
-
 
 exports.sign_up_post = [
     body('userName')
