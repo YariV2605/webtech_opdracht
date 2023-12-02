@@ -10,8 +10,6 @@ const saltRounds = 10;
 // display user page van logged in user
 exports.user_detail = asyncHandler(async (req, res, next) => {
     if(req.session.user){
-        console.log(req.session.user);
-        console.log('fav: ', req.session.user.favorieten);
         res.render("userDetails.pug", {userObj: req.session.user});
     }
     res.sendFile(join(__dirname, '../login.html'));

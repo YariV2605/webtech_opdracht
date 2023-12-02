@@ -15,16 +15,6 @@ exports.bier_list = asyncHandler(async (req, res) => {
     res.render('bierLijst.pug', {title: "bier lijst", bier_list: allBier});
 });
 
-exports.bier_list_per_merk = asyncHandler(async (req, res) => {
-    const selectedMerk = await merkModel.find({_id : req.params.merkId}).exec()
-    const merkBier = await bierModel.find({merk: selectedMerk})
-       .sort({name : 1})
-       .populate("merk")
-       .exec()
-
-    res.render('bierLijst.pug', {title: selectedMerk.merk + " lijst", bier_list: merkBier});
-});
-
 // toon specifiek bier
 exports.bier_detail = asyncHandler(async (req, res, next) => {
     const bier =
@@ -38,7 +28,6 @@ exports.bier_detail = asyncHandler(async (req, res, next) => {
         err.status = 404;
         return next(err);
     }
-    console.log(bier)
 
     res.render("bierDetails.pug", {
         title: bier.naam,

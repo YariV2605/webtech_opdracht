@@ -21,8 +21,6 @@ router.get('/bier', bierHandler.bier_list);
 router.get('/:merkId', merkHandler.merk_detail);
 
 
-router.get('/:merkId/bier', bierHandler.bier_list_per_merk);
-
 router.get('/:merkId/create', bierHandler.bier_create_get);
 router.post('/:merkId/create', bierHandler.bier_create_post);
 

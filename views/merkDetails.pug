@@ -1,16 +1,30 @@
 extends layout
 
 block content
+    style.
+        .bier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            list-style: none;
+        }
+
+        .bier-grid li {
+            padding: 10px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
     .w3-container(style='padding:128px 16px')
         h3.w3-center #{merk.merk}
         .w3-row-padding.w3-center(style='margin-top:64px')
             p
             |   #{merk.merk}
-            ul
-                each bier in bier_list
-                    li
-                        a(href=bier.url) #{bier.naam}
-                        |  (#{bier.merk.merk})
+    ul.bier-grid
+        each bier in bier_list
+            li
+                a(href=bier.url) #{bier.naam}
+                |  #{bier.merk.merk}
 
-                else
-                    li Geen bier in de DB.
+        else
+            li Geen bier in de DB.
