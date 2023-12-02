@@ -1,10 +1,23 @@
 extends layout
 
 block content
-    ul
+    style.
+        .bier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            list-style: none;
+        }
+
+        .bier-grid li {
+            padding: 10px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+    ul.bier-grid
         each merk in merk_list
             li
                 a(href=merk.url) #{merk.merk}
-
         else
             li Geen merken in de DB.
