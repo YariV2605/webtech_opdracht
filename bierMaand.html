@@ -37,9 +37,9 @@
         <!-- Right-sided navbar links -->
         <div class="w3-right w3-hide-small">
             <a href="/" class="w3-bar-item w3-button">HOME</a>
-            <a href="/ranking" class="w3-bar-item w3-button"><i class="fa fa-user"></i> RANKING</a>
             <a href="/lijst" class="w3-bar-item w3-button"><i class="fa fa-th"></i> BIERLIJST</a>
             <a href="/hotspot" class="w3-bar-item w3-button"><i class="fa fa-map-pin"></i> HOTSPOTS</a>
+            <a href="/users" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
         </div>
         <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
@@ -48,14 +48,48 @@
         </a>
     </div>
 </div>
-<p>Brugse Zot is een Belgisch bier dat diep geworteld is in de rijke brouwtradities van België, en het wordt vaak geprezen om zijn verfijnde smaak en geschiedenis. Gelegen in het betoverende Brugge, een stad die bekend staat om zijn middeleeuwse architectuur en culturele erfgoed, is deze kenmerkende blonde ale een waar symbool van vakmanschap en authenticiteit.
 
-    Dit bier, gebrouwen in de historische Brouwerij De Halve Maan, is doordrenkt met een erfenis die teruggaat tot 1856. Brugse Zot wordt gekenmerkt door zijn heldere gouden kleur en een rijke, volle schuimkraag. Bij het proeven onthult het bier een gebalanceerde combinatie van fruitige aroma's, een lichte kruidigheid en een subtiele hopbitterheid die een verfrissende afdronk biedt.
 
-    Het verhaal achter Brugse Zot voegt een extra dimensie toe aan zijn charme. De naam 'Zot' verwijst naar de bijnaam die aan de inwoners van Brugge wordt gegeven, terwijl het logo van het bier wordt gesierd door een afbeelding van de 'Brugse Zot', een personage dat legendarisch is in de stadsgeschiedenis.
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="/home" onclick="w3_close()" class="w3-bar-item w3-button">HOME</a>
+    <a href="/bierlijst" onclick="w3_close()" class="w3-bar-item w3-button">BIERLIJST</a>
+    <a href="/hotspot" onclick="w3_close()" class="w3-bar-item w3-button">HOTSPOT</a>
+    <a href="/users" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
 
-    De brouwerij zelf heeft een fascinerende geschiedenis, waarbij het brouwproces een perfecte combinatie van traditionele methoden en moderne technologieën omvat. Bezoekers van de brouwerij kunnen de ambachtelijke kunst van het brouwen ervaren en genieten van een degustatie van Brugse Zot, terwijl ze ondergedompeld worden in de rijke culturele sfeer van Brugge.
+</nav>
 
-    Brugse Zot vertegenwoordigt niet alleen een bier van uitstekende kwaliteit, maar ook een symbool van trots voor de stad Brugge, dat beroemd is om zijn historische charme, kunst, en vakmanschap. Het bier weerspiegelt de zorgvuldige aandacht voor detail en passie voor brouwkunst die België tot een wereldwijd erkende bestemming voor bierliefhebbers heeft gemaakt.</p>
+
+
+<div class="w3-container  w3-padding-64 ">
+    <div class="w3-padding">
+        <div class="w3-flex-container">
+            <div class="w3-text-content">
+                <div class = "w3-center w3-padding-32 ">
+                    <h2>Bier van de maand: Brugse zot!</h2>
+                    <div class = "w3-container">
+                        <img src="/public/images/brugsezotstock.jpeg" width="400" height="500">
+                    </div>
+                </div>
+
+                <div class = "w3-left">
+                    <p>Brugse Zot is een Belgisch bier dat diep geworteld is in de rijke brouwtradities van België, en het wordt vaak geprezen om zijn verfijnde smaak en geschiedenis. Gelegen in het betoverende Brugge, een stad die bekend staat om zijn middeleeuwse architectuur en culturele erfgoed, is deze kenmerkende blonde ale een waar symbool van vakmanschap en authenticiteit.
+                        Dit bier, gebrouwen in de historische Brouwerij De Halve Maan, is doordrenkt met een erfenis die teruggaat tot 1856. Brugse Zot wordt gekenmerkt door zijn heldere gouden kleur en een rijke, volle schuimkraag. Bij het proeven onthult het bier een gebalanceerde combinatie van fruitige aroma's, een lichte kruidigheid en een subtiele hopbitterheid die een verfrissende afdronk biedt.
+                        Het verhaal achter Brugse Zot voegt een extra dimensie toe aan zijn charme. De naam 'Zot' verwijst naar de bijnaam die aan de inwoners van Brugge wordt gegeven, terwijl het logo van het bier wordt gesierd door een afbeelding van de 'Brugse Zot', een personage dat legendarisch is in de stadsgeschiedenis.
+                        De brouwerij zelf heeft een fascinerende geschiedenis, waarbij het brouwproces een perfecte combinatie van traditionele methoden en moderne technologieën omvat. Bezoekers van de brouwerij kunnen de ambachtelijke kunst van het brouwen ervaren en genieten van een degustatie van Brugse Zot, terwijl ze ondergedompeld worden in de rijke culturele sfeer van Brugge.
+                        Brugse Zot vertegenwoordigt niet alleen een bier van uitstekende kwaliteit, maar ook een symbool van trots voor de stad Brugge, dat beroemd is om zijn historische charme, kunst, en vakmanschap. Het bier weerspiegelt de zorgvuldige aandacht voor detail en passie voor brouwkunst die België tot een wereldwijd erkende bestemming voor bierliefhebbers heeft gemaakt.</p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="w3-center w3-black w3-padding-64">
+    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+</footer>
 </body>
 </html>
