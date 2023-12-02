@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 // const {join} = require("path");
 const merkModel = require("../models/merkModel");
+const bierModel = require("../models/bierModel");
 const {join} = require("path");
 const { body, validationResult } = require("express-validator");
 
@@ -15,9 +16,11 @@ exports.merk_list = asyncHandler(async (req, res) => {
 
 // toon specifiek merk
 exports.merk_detail = asyncHandler(async (req, res, next) => {
-    const merk =
-        await merkModel.findById(req.params.merkId)
-            .exec()
+    const merk = await merkModel.findById(req.params.merkId)
+            .exec();
+
+    const bieren = await bierModel.find({merk: merk})
+        .exec();
 
     if (merk === null) {
         // No results.
@@ -28,7 +31,8 @@ exports.merk_detail = asyncHandler(async (req, res, next) => {
 
     res.render("merkDetails", {
         title: merk.merk,
-        merk: merk
+        merk: merk,
+        bier_list: bieren
     });
     // res.send(`NOT IMPLEMENTED: Merk detail: ${req.params.id}`);
 });

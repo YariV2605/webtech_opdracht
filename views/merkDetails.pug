@@ -7,4 +7,10 @@ block content
             p
             |   #{merk.merk}
             ul
-            //TODO lijst van bier
+                each bier in bier_list
+                    li
+                        a(href=bier.url) #{bier.naam}
+                        |  (#{bier.merk.merk})
+
+                else
+                    li Geen bier in de DB.
