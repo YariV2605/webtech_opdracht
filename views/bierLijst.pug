@@ -14,12 +14,34 @@ block content
             background-color: #f1f1f1;
             text-align: center;
         }
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js')
+    script.
+        function remove(bierId, merkId){
+            console.log("button pressed", bierId)
+            $.ajax({
+                type: 'POST',
+                url: "/lijst/" + bier.merk._id + "/" + bier._id + "/delete",
+                contentType: "",
+                data: {},
+                dataType: "json",
+                success: function (data, status) {
+                    document.getElementById(bier._id + "a").innerHTML = "[deleted]" + data;
+                    if (status === 200) {
+                        document.getElementById(bier._id + "a").innerHTML = "[deleted]" + data;
+                    }
+                },
+                error: function() { alert('Error'); }
+            });
+        }
+
 
     ul.bier-grid
         each bier in bier_list
             li
-                a(href=bier.url) #{bier.naam}
+                a(href=bier.url id=bier._id + "a") #{bier.naam}
                 |  #{bier.merk.merk}
+                if isAdmin
+                    button(type='button' onclick='remove(' + bier._id + ',' + bier.merk._id + ')') Delete
 
         else
             li Geen bier in de DB.

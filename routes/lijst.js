@@ -25,7 +25,7 @@ router.get('/:merkId/create', bierHandler.bier_create_get);
 router.post('/:merkId/create', bierHandler.bier_create_post);
 
 router.get('/:merkId/delete', bierHandler.bier_delete_get);
-router.post('/:merkId/delete', bierHandler.bier_delete_post);
+router.post('/:merkId/:bierId/delete', bierHandler.bier_delete_post);
 
 router.get('/:merkId/update', bierHandler.bier_update_get);
 router.post('/:merkId/update', bierHandler.bier_update_post);

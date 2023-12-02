@@ -10,9 +10,12 @@ exports.bier_list = asyncHandler(async (req, res) => {
     const allBier = await bierModel.find({})
         .sort({name : 1})
         .populate("merk")
-        .exec()
-
-    res.render('bierLijst.pug', {title: "bier lijst", bier_list: allBier});
+        .exec();
+    let isAdmin = false;
+    if (req.session.user){
+        isAdmin = req.session.user.isAdmin;
+    }
+    res.render('bierLijst.pug', {title: "bier lijst", bier_list: allBier, isAdmin: isAdmin});
 });
 
 // toon specifiek bier
