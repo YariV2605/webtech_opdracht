@@ -58,13 +58,18 @@ exports.bier_create_post = [
         .isLength({min: 1})  // er moet iets ingevuld zijn
         .escape(),                  // sanitation
 
+    body("beschrijving")
+        .escape,
+
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
         if(errors.isEmpty()){
             const merk = await merkModel.findById(req.params.merkId).exec();
             const bier = new bierModel({
                 naam: req.body.naam,
-                merk: merk
+                merk: merk,
+                beschrijving: req.body.beschrijving,
+                foto: req.body.foto
             });
             await bier.save();
             res.redirect(bier.url);

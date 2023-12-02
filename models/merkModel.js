@@ -6,7 +6,7 @@ const merkSchema = new Schema({
         type: String,
         required : true
     },
-    site: String,//link naar de site van dit merk
+    beschrijving: String,//link naar de site van dit merk
 });
 
 merkSchema.virtual('url').get(function() {

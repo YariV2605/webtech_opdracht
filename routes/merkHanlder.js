@@ -46,11 +46,15 @@ exports.merk_create_post = [
         .isLength({min: 1})  // er moet iets ingevuld zijn
         .escape(),                  // sanitation
 
+    body("beschrijving")
+        .escape(),
+
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
         if(errors.isEmpty()){
             const merk = new merkModel({
-                merk: req.body.merk
+                merk: req.body.merk,
+                beschrijvng: req.body.beschrijvng
             });
             await merk.save();
             res.redirect(merk.url);

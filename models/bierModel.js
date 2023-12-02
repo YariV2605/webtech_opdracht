@@ -23,12 +23,15 @@ const bierSchema = new Schema({
         type : Number,
         required : true,
         default : 0
+    },
+    foto: String,                                       //naam van de foto --> moet ook ge-upload kunnen worden
+    percentage: {
+        type: Number,
+        required : true
+    },
+    beschrijving: {
+        type: String
     }
-    // foto: String,                                       //naam van de foto --> moet ook ge-upload kunnen worden
-    // percentage: {
-    //     type: Number,
-    //     required : true
-    // },
     // score: Number,
 });
 
