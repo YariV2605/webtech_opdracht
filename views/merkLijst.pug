@@ -26,6 +26,20 @@ head
         ul {
             padding-top: 50px; /* Adjust as needed based on your navbar height */
         }
+
+        ul.bier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            list-style: none;
+        }
+
+        ul.bier-grid li {
+            padding: 10px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
 // Navbar (sit on top)
 .w3-top
     #myNavbar.w3-bar.w3-white.w3-card
@@ -46,7 +60,7 @@ head
         a.w3-bar-item.w3-button.w3-right.w3-hide-large.w3-hide-medium(href='javascript:void(0)' onclick='w3_open()')
             i.fa.fa-bars
 
-ul
+ul.bier-grid
     each merk in merk_list
         li
             a(href=merk.url) #{merk.merk}
