@@ -40,7 +40,12 @@ exports.bier_detail = asyncHandler(async (req, res, next) => {
 
 // toon create form
 exports.bier_create_get = asyncHandler(async (req, res, next) => {
-    res.sendFile(join(__dirname, '../createBier.html'));//TODO als req.params.merkId niet bestaat --> error
+    if(req.session.user) {
+        if (req.session.user.isAdmin) {
+            res.sendFile(join(__dirname, '../createBier.html'));//TODO als req.params.merkId niet bestaat --> error
+        }
+    }
+    res.redirect("/lijst/" + req.params.merkId);
 });
 
 // voeg toe aan db
@@ -54,41 +59,50 @@ exports.bier_create_post = [
         .escape,
 
     asyncHandler(async (req, res, next) => {
-        const errors = validationResult(req);
-        if(errors.isEmpty()){
-            const merk = await merkModel.findById(req.params.merkId).exec();
-            const bier = new bierModel({
-                naam: req.body.naam,
-                merk: merk,
-                beschrijving: req.body.beschrijving,
-                foto: req.body.foto
-            });
-            await bier.save();
-            res.redirect(bier.url);
+        if(req.session.user) {
+            if (req.session.user.isAdmin) {
+                const errors = validationResult(req);
+                if (errors.isEmpty()) {
+                    const merk = await merkModel.findById(req.params.merkId).exec();
+                    const bier = new bierModel({
+                        naam: req.body.naam,
+                        merk: merk,
+                        beschrijving: req.body.beschrijving,
+                        foto: req.body.foto
+                    });
+                    await bier.save();
+                    res.redirect(bier.url);
+                } else {
+                    res.sendFile(join(__dirname, '../createBier.html'));
+                }
+            }
         }
-        else {
-            res.sendFile(join(__dirname, '../createBier.html'));
-        }
+        let error = new Error(forbidden).status(403);
+        return(next(error));
     })
 ];
 
 // toon delete form
 exports.bier_delete_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Bier delete GET");
+    if(req.session.user) {
+        if(req.session.user.isAdmin) {
+            let bier = await bierModel.findById(req.params.bierId)
+                .populate("merk")
+                .exec();
+            res.render("deleteForm.pug", {title: "delete " + bier.naam, naam: bier.merk.merk + bier.naam});
+        }
+    }
+    res.redirect("/lijst/" + req.params.merkId + "/" + req.params.bierId);
 });
 
 // delete bier uit db
 exports.bier_delete_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Bier delete POST");
+    if(req.session.user) {
+        if (req.session.user.isAdmin) {
+            bierModel.findByIdAndDelete(req.params.bierId).exec();
+            res.redirect("/lijst/" + req.params.merkId);
+        }
+    }
+    let error = new Error("forbidden").status(403);
+    return(next(error));
 });
-
-// toon update form
-exports.bier_update_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Bier update GET");
-});
-
-// update in db
-exports.bier_update_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Bier update POST");
-});
-

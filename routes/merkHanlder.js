@@ -3,15 +3,18 @@ const asyncHandler = require("express-async-handler");
 const merkModel = require("../models/merkModel");
 const bierModel = require("../models/bierModel");
 const {join} = require("path");
-const { body, validationResult } = require("express-validator");
+const {body, validationResult} = require("express-validator");
 
 // toon bierlijst
 exports.merk_list = asyncHandler(async (req, res) => {
     const allMerk = await merkModel.find({}, "merk")
         .sort({name : 1})
         .exec()
-
-    res.render('merkLijst.pug', {title: "merk lijst", merk_list: allMerk});
+    let isAdmin = false;
+    if(req.session.user){
+        isAdmin = req.session.user.isAdmin;
+    }
+    res.render('merkLijst.pug', {title: "merk lijst", merk_list: allMerk, isAdmin: isAdmin});
 });
 
 // toon specifiek merk
@@ -39,8 +42,12 @@ exports.merk_detail = asyncHandler(async (req, res, next) => {
 
 // toon create form
 exports.merk_create_get = asyncHandler(async (req, res, next) => {
-    res.sendFile(join(__dirname, '../createMerk.html'));
-    // res.send("NOT IMPLEMENTED: Merk create GET");
+    if(req.session.user) {
+        if (req.session.user.isAdmin) {
+            res.sendFile(join(__dirname, '../createMerk.html'));
+        }
+    }
+    res.redirect("/lijst");
 });
 
 // voeg toe aan db
@@ -54,38 +61,51 @@ exports.merk_create_post = [
         .escape(),
 
     asyncHandler(async (req, res, next) => {
-        const errors = validationResult(req);
-        if(errors.isEmpty()){
-            const merk = new merkModel({
-                merk: req.body.merk,
-                beschrijvng: req.body.beschrijvng
-            });
-            await merk.save();
-            res.redirect(merk.url);
+        if(req.session.user) {
+            if (req.session.user.isAdmin) {
+                const errors = validationResult(req);
+                if (errors.isEmpty()) {
+                    const merk = new merkModel({
+                        merk: req.body.merk,
+                        beschrijvng: req.body.beschrijvng
+                    });
+                    await merk.save();
+                    res.redirect(merk.url);
+                } else {
+                    res.sendFile(join(__dirname, '../createMerk.html'));
+                }
+            }
         }
-        else {
-            res.sendFile(join(__dirname, '../createMerk.html'));
-        }
+        let error = new Error("forbidden").status(403);
+        return(next(error));
     })
 ];
 
 // toon delete form
 exports.merk_delete_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Merk delete GET");
+    if(req.session.user) {
+        if(req.session.user.isAdmin) {
+            let merk = await merkModel.findById(req.params.merkId)
+                .exec();
+            res.render("deleteForm.pug", {title: "delete " + merk.merk, naam: merk.merk});
+        }
+    }
+    res.redirect("/lijst/" + req.params.merkId);
 });
 
 // delete merk uit db
 exports.merk_delete_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Merk delete POST");
-});
-
-// toon update form
-exports.merk_update_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Merk update GET");
-});
-
-// update in db
-exports.merk_update_post = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Merk update POST");
+    if(req.session.user) {
+        if (req.session.user.isAdmin) {
+            let merk = await merkModel.findById(req.params.merkId);
+            let bieren = await bierModel.find({merk: merk});
+            if(bieren.length !== 0) {
+                await merkModel.findByIdAndDelete(req.params.merkId).exec();
+            }
+            res.redirect("/lijst");
+        }
+    }
+    let error = new Error("forbidden").status(403);
+    return(next(error));
 });
 

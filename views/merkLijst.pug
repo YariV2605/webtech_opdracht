@@ -19,5 +19,8 @@ block content
         each merk in merk_list
             li
                 a(href=merk.url) #{merk.merk}
+                if isAdmin
+                    br
+                    button(type='button' onclick='remove(' + merk._id + ')') Delete
         else
             li Geen merken in de DB.
