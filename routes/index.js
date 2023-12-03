@@ -4,8 +4,17 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  //res.render('index', { title: 'Express' });
-  res.sendFile(join(__dirname, '../index.html'))
+    if (req.session.cookiePolicy === true) {
+        res.sendFile(join(__dirname, '../index.html'));
+    }
+    else {
+        res.sendFile(join(__dirname, '../cookiePolicy.html'));
+    }
+});
+
+router.post('/', function(req, res, next) {
+    req.session.cookiePolicy = true;
+    res.sendFile(join(__dirname, '../index.html'));
 });
 
 module.exports = router;
