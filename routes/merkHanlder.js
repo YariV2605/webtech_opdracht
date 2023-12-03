@@ -77,9 +77,15 @@ exports.merk_create_post = [
                     res.sendFile(join(__dirname, '../createMerk.html'));
                 }
             }
+            else {
+                let error = new Error("forbidden").status(403);
+                return (next(error));
+            }
         }
-        let error = new Error("forbidden").status(403);
-        return(next(error));
+        else {
+            let error = new Error("forbidden").status(403);
+            return (next(error));
+        }
     })
 ];
 
@@ -91,8 +97,13 @@ exports.merk_delete_get = asyncHandler(async (req, res, next) => {
                 .exec();
             res.render("deleteForm.pug", {title: "delete " + merk.merk, naam: merk.merk});
         }
+        else {
+            res.redirect("/lijst/" + req.params.merkId);
+        }
     }
-    res.redirect("/lijst/" + req.params.merkId);
+    else {
+        res.redirect("/lijst/" + req.params.merkId);
+    }
 });
 
 // delete merk uit db
@@ -106,8 +117,35 @@ exports.merk_delete_post = asyncHandler(async (req, res, next) => {
             }
             res.redirect("/lijst");
         }
+        else {
+            let error = new Error("forbidden").status(403);
+            return (next(error));
+        }
+    }
+    else {
+        let error = new Error("forbidden").status(403);
+        return (next(error));
+    }
+});
+
+exports.merk_delete_ajax = asyncHandler(async(req, res, next) => {
+    if (req.session.user) {
+        if (req.session.user.isAdmin) {
+            let merk = await merkModel.findById(req.params.merkId);
+            let bieren = await bierModel.find({merk: merk});
+            if (bieren.length !== 0) {
+                await merkModel.findByIdAndDelete(req.params.merkId).exec();
+                res.send("OK");
+            }
+            else {
+                let error = new Error("nog bier in merk").status(403);
+                return (next(error));
+            }
+        }
+        let error = new Error("forbidden").status(403);
+        return (next(error));
     }
     let error = new Error("forbidden").status(403);
-    return(next(error));
+    return (next(error));
 });
 
