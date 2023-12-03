@@ -29,6 +29,7 @@
             padding: 16px;
         }
     </style>
+    <script src="routes/users.js"></script>
 </head>
 <body>
 
@@ -43,15 +44,24 @@
             <a href="/hotspot" class="w3-bar-item w3-button"><i class="fa fa-map-pin"></i> HOTSPOTS</a>
             <a href="/users" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
         </div>
-        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-
         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
             <i class="fa fa-bars"></i>
         </a>
-    </div>
+
 </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
+</div>
+<!--
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-right w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+    <a href="javascript:void(0)" onclick="closeNav()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+    <a href="/home" onclick="closeNav()" class="w3-bar-item w3-button">HOME</a>
+    <a href="/lijst" onclick="closeNav()" class="w3-bar-item w3-button">BIERLIJST</a>
+    <a href="/hotspot" onclick="closeNav()" class="w3-bar-item w3-button">HOTSPOT</a>
+    <a href="/users" onclick="closeNav()" class="w3-bar-item w3-button">LOGIN</a>
 
+</nav>
+-->
 <!-- Sidebar on small screens when clicking the menu icon -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
@@ -61,7 +71,16 @@
     <a href="/users" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
 
 </nav>
-
+<!--
+<div id="mySidebar" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="w3_close()">&times;</a>
+    <a href="#home">HOME</a>
+    <a href="#lijst">BIERLIJST</a>
+    <a href="#hotspot">HOTSPOT</a>
+    <a href="#users">LOGIN</a>
+</div>
+<span onclick="openNav()">open</span>
+-->
 <!-- Header with full-height image -->
 <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
     <div class="w3-display-left w3-text-white" style="padding:48px">
@@ -78,8 +97,7 @@
     <div class="w3-row-padding w3-center" style="margin-top:64px">
         <div class="w3-center">
             <i class="fa fa-beer w3-margin-bottom w3-jumbo w3-center"></i>
-            <p>Op zoek naar een nieuw biertje? Wil je je ervaring delen? Welkom bij ons biermagazine. Elke maand zetten wij een nieuw biertje in de kijker en bieden we u de mogelijkheid om deze aan te kopen aan een voordelige prijs.
-                Of abboneer je en ontvang maandelijks eenn bier pakket.</p>
+            <p>Welkom bij onze bruisende digitale ontmoetingsplaats! Stap binnen en ontdek een wereld waar bierliefhebbers samenkomen om de rijke smaken van verschillende brouwsels te verkennen. Maar dat is niet alles - we zijn meer dan alleen bier. Voor studenten bieden we een schat aan evenementen die bruisen van energie en creativiteit. Daarnaast duiken we diep in de kern van bruisende steden, delen we artikelen over hotspots in het centrum, nemen we je mee op citytrips naar verborgen juweeltjes en bieden we inzichten in de meest onmisbare festivals. Welkom in onze wereld vol bier, studentenleven en ontdekkingen in steden - waar elke pagina een nieuwe avontuurlijke reis is. Kom binnen, kijk rond en laat je inspireren!</p>
         </div>
 
     </div>
@@ -141,56 +159,6 @@
     </div>
 </div>
 
-<!--
-<div class="w3-container w3-center w3-dark-grey" style="padding:128px 16px" id="pricing">
-    <h3>PRICING</h3>
-    <p class="w3-large">Choose a pricing plan that fits your needs.</p>
-    <div class="w3-row-padding" style="margin-top:64px">
-        <div class="w3-third w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-                <li class="w3-black w3-xlarge w3-padding-32">Bier van vorige maand.</li>
-                <img src="/public/images/Tongerlo_Blond_800x1530.png" alt="yari"  width="300" height="550">
-                <li class="w3-padding-16">Kwak Amber</li>
-                <li class="w3-padding-16">
-                    <h2 class="w3-wide">$ 10</h2>
-                    <span class="w3-opacity">Voor 6 stuks.</span>
-                </li>
-                <li class="w3-light-grey w3-padding-24">
-                    <button class="w3-button w3-black w3-padding-large"><i class="fa fa-shopping-cart"></i> Toevoegen aan winkelwagen</button>
-                </li>
-            </ul>
-        </div>
-        <div class="w3-third w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-                <li class="w3-red w3-xlarge w3-padding-32">Bier van de maand.</li>
-                <img src="/public/images/brugsezotstock.jpeg" alt="yari"  width="350" height="550">
-                <li class="w3-padding-16">Kwak Amber</li>
-                <li class="w3-padding-16">
-                    <h2 class="w3-wide">$ 10</h2>
-                    <span class="w3-opacity">Voor 6 stuks.</span>
-                </li>
-                <li class="w3-light-grey w3-padding-24">
-                    <button class="w3-button w3-black w3-padding-large"><i class="fa fa-shopping-cart"></i> Toevoegen aan winkelwagen</button>
-                </li>
-            </ul>
-        </div>
-        <div class="w3-third w3-section">
-            <ul class="w3-ul w3-white w3-hover-shadow">
-                <li class="w3-black w3-xlarge w3-padding-32">Bierabonnement.</li>
-                <img src="/public/images/mysteriebier.png" alt="yari"  width="350" height="550">
-                <li class="w3-padding-16">Kwak Amber</li>
-                <li class="w3-padding-16">
-                    <h2 class="w3-wide">$ 8</h2>
-                    <span class="w3-opacity">per month</span>
-                    <span class="w3-opacity">voor 6 stuks.</span>
-                </li>
-                <li class="w3-light-grey w3-padding-24">
-                    <button class="w3-button w3-black w3-padding-large"><i class="fa fa-shopping-cart"></i> Toevoegen aan winkelwagen</button>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
 
 -->
 <!-- Footer -->
@@ -199,6 +167,9 @@
 
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
+
+<div id="fb-root"></div>
+<script async defer crossOrigin="anonymous" src="https://connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v18.0" nonce="9josY9zw"></script>
 
 <script>
     // Modal Image Gallery
@@ -214,21 +185,20 @@
     var mySidebar = document.getElementById("mySidebar");
 
     function w3_open() {
-        if (mySidebar.style.display === 'block') {
-            mySidebar.style.display = 'none';
+        var sidebar = document.getElementById("mySidebar");
+        if (sidebar.style.display === "block") {
+            sidebar.style.display = "none";
         } else {
-            mySidebar.style.display = 'block';
+            sidebar.style.display = "block";
         }
     }
 
-    // Close the sidebar with the close button
     function w3_close() {
-        mySidebar.style.display = "none";
+        var sidebar = document.getElementById("mySidebar");
+        sidebar.style.display = "none";
     }
 
-    <div id="fb-root"></div>
-    <script async defer crossOrigin="anonymous" src="https://connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v18.0" nonce="9josY9zw"></script>
-</script>
+    </script>
 
 </body>
 </html>
