@@ -60,7 +60,7 @@ exports.add_to_favorite = asyncHandler(async (req, res, next) => {
 exports.bier_create_get = asyncHandler(async (req, res, next) => {
     if(req.session.user) {
         if (req.session.user.isAdmin) {
-            res.sendFile(join(__dirname, '../createBier.html'));//TODO als req.params.merkId niet bestaat --> error
+            res.sendFile(join(__dirname, '../createBier.html'));
         }
     }
     else {
@@ -70,7 +70,7 @@ exports.bier_create_get = asyncHandler(async (req, res, next) => {
 
 // voeg toe aan db
 exports.bier_create_post = [
-    // body("naam", "naam moet ingevuld zijn.")//TODO check op al gebruikte naam
+    // body("naam", "naam moet ingevuld zijn.")
     //     .trim()                      // whitespace in begin en eind verwijderen
     //     .isLength({min: 1})  // er moet iets ingevuld zijn
     //     .escape(),                  // sanitation
