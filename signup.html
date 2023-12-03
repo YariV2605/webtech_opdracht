@@ -41,14 +41,14 @@
             <a href="/hotspot" class="w3-bar-item w3-button"><i class="fa fa-map-pin"></i> HOTSPOTS</a>
             <a href="/users" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
         </div>
-        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
-
         <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
             <i class="fa fa-bars"></i>
         </a>
-    </div>
-</div>
 
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+</div>
 
 <!-- Sidebar on small screens when clicking the menu icon -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
@@ -59,6 +59,7 @@
     <a href="/users" onclick="w3_close()" class="w3-bar-item w3-button">LOGIN</a>
 
 </nav>
+
 
 <div class="w3-container" style="padding:128px 16px">
     <form method="post">
@@ -78,6 +79,31 @@
 
     <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
+<script>
+    // Modal Image Gallery
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = element.alt;
+    }
 
+
+    // Toggle between showing and hiding the sidebar when clicking the menu icon
+    var mySidebar = document.getElementById("mySidebar");
+
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+        } else {
+            mySidebar.style.display = 'block';
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+    }
+</script>
 </body>
 </html>
