@@ -15,12 +15,31 @@ block content
             text-align: center;
         }
 
+    script.
+        function remove(merkId) {
+            $.ajax({
+                type: 'POST',
+                url: "/lijst/" + merkId + "/delete_ajax",
+                contentType: "application/json; charset=utf-8",
+                data: {},
+                dataType: "text",
+                success: function (data, status) {
+                    if(status === 200) {
+                        document.getElementById(merkId).innerHTML = "[deleted]";
+                    }
+                },
+                error: function () {
+                    alert('Error');
+                }
+            });
+        }
+
     ul.bier-grid
         each merk in merk_list
             li
-                a(href=merk.url) #{merk.merk}
+                a(href=merk.url id="" + merk._id + "") #{merk.merk}
                 if isAdmin
                     br
-                    button(type='button' onclick='remove(' + merk._id + ')') Delete
+                    button(type='button' onclick="remove('" + merk._id + "')") Delete
         else
             li Geen merken in de DB.

@@ -10,9 +10,12 @@ const saltRounds = 10;
 // display user page van logged in user
 exports.user_detail = asyncHandler(async (req, res, next) => {
     if(req.session.user){
-        res.render("userDetails.pug", {userObj: req.session.user});
+        let user = await userModel.findById(req.session.user._id).populate("favorieten").exec();
+        res.render("userDetails.pug", {userObj: user});
     }
-    res.sendFile(join(__dirname, '../login.html'));
+    else {
+        res.sendFile(join(__dirname, '../login.html'));
+    }
 });
 
 exports.user_detail_post = [
@@ -25,8 +28,8 @@ exports.user_detail_post = [
         let user = await userModel.findOne({userName: req.body.userName})
             .populate("favorieten")
             .exec();
-        let hashedPassword = bcrypt.hashSync(req.body.password, user.salt);
-        let authenticated = hashedPassword === user.passwordHash;
+        let hashedPassword = await bcrypt.hashSync(req.body.password, user.salt);
+        let authenticated = await hashedPassword === user.passwordHash;
         if(errors.isEmpty() && authenticated) {
             req.session.user = user;
         }

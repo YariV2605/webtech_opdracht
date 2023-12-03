@@ -23,8 +23,10 @@ router.post('/:merkId/delete', merkHandler.merk_delete_post);
 
 router.get('/:merkId/:bierId/delete', bierHandler.bier_delete_get);
 router.post('/:merkId/:bierId/delete', bierHandler.bier_delete_post);
+router.post('/:merkId/:bierId/delete_ajax', bierHandler.bier_delete_post_ajax);
 
 router.get('/:merkId/:bierId', bierHandler.bier_detail);
+router.post('/:merkId/:bierId', bierHandler.add_to_favorite);
 
 
 module.exports = router;

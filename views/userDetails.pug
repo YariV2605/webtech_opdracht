@@ -1,12 +1,27 @@
 extends layout
 
 block content
+    style.
+        .bier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            list-style: none;
+        }
+
+        .bier-grid li {
+            padding: 10px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
     .w3-container(style='padding:128px 16px')
         p #{userObj.userName}
-        ul
-            each bier in userObj.favorieten
-                li #{bier.merk.merk}
-                    | #{bier.naam}
-                    | #{bier.url}
-            else
-                li nog geen favorieten
+    ul.bier-grid
+        each bier in userObj.favorieten
+            li
+                a(href=""+bier.url+"") #{bier.naam}
+                br
+                #{bier.naam}
+
+        else
+            li Nog geen favorieten

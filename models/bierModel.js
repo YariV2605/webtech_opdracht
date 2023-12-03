@@ -25,10 +25,10 @@ const bierSchema = new Schema({
         default : 0
     },
     foto: String,                                       //naam van de foto --> moet ook ge-upload kunnen worden
-    percentage: {
-        type: Number,
-        required : true
-    },
+    // percentage: {
+    //     type: Number,
+    //     required : true
+    // },
     beschrijving: {
         type: String
     }
