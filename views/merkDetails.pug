@@ -15,6 +15,7 @@ block content
             text-align: center;
         }
 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js')
     script.
         function remove(bierId, merkId) {
             $.ajax({
@@ -43,7 +44,7 @@ block content
     ul.bier-grid
         each bier in bier_list
             li
-                a(href=bier.url) #{bier.naam}
+                a(href=bier.url id="" + bier._id + "") #{bier.naam}
                 |  #{bier.merk.merk}
                 if isAdmin
                     br

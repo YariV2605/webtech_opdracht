@@ -15,6 +15,7 @@ block content
             text-align: center;
         }
 
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js')
     script.
         function remove(merkId) {
             $.ajax({
@@ -24,7 +25,7 @@ block content
                 data: {},
                 dataType: "text",
                 success: function (data, status) {
-                    if(status === 200) {
+                    if(data === 'OK') {
                         document.getElementById(merkId).innerHTML = "[deleted]";
                     }
                 },

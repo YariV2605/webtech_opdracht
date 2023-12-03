@@ -140,7 +140,7 @@ exports.bier_delete_post_ajax = asyncHandler(async (req, res, next) => {
     if(req.session.user) {
         if (req.session.user.isAdmin) {
             bierModel.findByIdAndDelete(req.params.bierId).exec();
-            res.send("succes");
+            res.send("OK");
         }
     }
     let error = new Error("forbidden").status(403);

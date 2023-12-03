@@ -132,20 +132,17 @@ exports.merk_delete_ajax = asyncHandler(async(req, res, next) => {
     if (req.session.user) {
         if (req.session.user.isAdmin) {
             let merk = await merkModel.findById(req.params.merkId);
-            let bieren = await bierModel.find({merk: merk});
-            if (bieren.length !== 0) {
-                await merkModel.findByIdAndDelete(req.params.merkId).exec();
-                res.send("OK");
-            }
-            else {
-                let error = new Error("nog bier in merk").status(403);
-                return (next(error));
-            }
+            await merkModel.findByIdAndDelete(req.params.merkId).exec();
+            res.send("OK");
         }
+        else {
+            let error = new Error("forbidden").status(403);
+            return (next(error));
+        }
+    }
+    else {
         let error = new Error("forbidden").status(403);
         return (next(error));
     }
-    let error = new Error("forbidden").status(403);
-    return (next(error));
 });
 

@@ -20,6 +20,7 @@ router.post('/:merkId/create', bierHandler.bier_create_post);
 
 router.get('/:merkId/delete', merkHandler.merk_delete_get);
 router.post('/:merkId/delete', merkHandler.merk_delete_post);
+router.post('/:merkId/delete_ajax', merkHandler.merk_delete_ajax);
 
 router.get('/:merkId/:bierId/delete', bierHandler.bier_delete_get);
 router.post('/:merkId/:bierId/delete', bierHandler.bier_delete_post);

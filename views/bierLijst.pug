@@ -14,7 +14,7 @@ block content
             background-color: #f1f1f1;
             text-align: center;
         }
-
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js')
     script.
         function remove(bierId, merkId){
             $.ajax({
@@ -24,9 +24,8 @@ block content
                 data: {},
                 dataType: "text",
                 success: function (data, status) {
-                    document.getElementById(bierId).innerHTML = "[deleted]" + data;
-                    if (status === 200) {
-                        document.getElementById(bierId).innerHTML = "[deleted]" + data;
+                    if (data === 'OK') {
+                        document.getElementById(bierId).innerHTML = "[deleted]";
                     }
                 },
                 error: function() { alert('Error'); }
