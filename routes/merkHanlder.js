@@ -47,7 +47,9 @@ exports.merk_create_get = asyncHandler(async (req, res, next) => {
             res.sendFile(join(__dirname, '../createMerk.html'));
         }
     }
-    res.redirect("/lijst");
+    else {
+        res.redirect("/lijst");
+    }
 });
 
 // voeg toe aan db
