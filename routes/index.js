@@ -17,4 +17,8 @@ router.post('/', function(req, res, next) {
     res.sendFile(join(__dirname, '../index.html'));
 });
 
+router.get('/fred.mp4', function(req, res, next){
+    res.sendFile(join(__dirname, '../public/images/fred.mp4'));
+});
+
 module.exports = router;
