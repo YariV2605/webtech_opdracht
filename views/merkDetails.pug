@@ -46,6 +46,7 @@ block content
             li
                 a(href=bier.url id="" + bier._id + "") #{bier.naam}
                 |  #{bier.merk.merk}
+
                 if isAdmin
                     br
                     button(onclick="remove('" + bier._id + "','" + bier.merk._id + "')") Delete
